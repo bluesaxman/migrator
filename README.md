@@ -12,7 +12,7 @@ Twocows email on the hosting account you are moving to.
 
 Syntax:
 
-migrator.sh -i <IP Address>:<Username>:<Password> -o <IP Address>:<Username>:<Password>
+migrator.sh -i &lt;IP Address&gt;:&lt;Username&gt;:&lt;Password&gt; -o &lt;IP Address&gt;:&lt;Username&gt;:&lt;Password&gt;
 
 -i    The old hosting account
 -o    The new hosting account
