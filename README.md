@@ -1,5 +1,5 @@
 # migrator
-An easy automated way to migrated (From most) hosting accounts to a cpanel hosting account. 
+An easy automated way to migrate (From most) hosting accounts to a cpanel hosting account. 
 
 Description:
 This projects aim is to create an automated way to move a hosting account from one host to another with only the knowledge of what the SSH logins for both accounts are. 
