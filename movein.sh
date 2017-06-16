@@ -15,9 +15,9 @@
 #update them with the new database name
 #update them with the new user and ket from the respective doormat file
 
-#Email time
-#connect to the chi API and use the information in ~/FrontPorch/emails/ to create the email accounts in CHI
-#connect to the mac tool API and use the informtaion in ~/FrontPorch/emails/ to start a migration job for the email accounts.
+
+#Email?
+
 
 #Everythings moved in, clean up the front porch
 #rm -rf ~/FrontPorch
