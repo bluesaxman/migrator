@@ -88,29 +88,30 @@ fi
 #Determain access level on -i
 echo "Testing ability to ssh to $INADDRESS"
 #if no SSH access Error: SSH access required! Logins for -i failed to access SSH
-if [[ sshpass -p "$INPASSWORD" ssh -o StrictHostKeyChecking=no $INUSERNAME@$INADDRESS exit ]]; then
+sshpass -p$INPASSWORD ssh -o StrictHostKeyChecking=no $INUSERNAME@$INADDRESS 'exit'
+if [ $? > 0 ]; then
         echo "There were problems connecting to $INADDRESS"
         exit 1
 fi
 #Determain access level on -o
 echo "Testing ability to ssh to $OUTADDRESS"
 #if no SSH access Error: SSH access required! Logins for -o failed to access SSH
-if [[ sshpass -p "$OUTPASSWORD" ssh -o StrictHostKeyChecking=no $OUTUSERNAME@$OUTADDRESS exit ]]; then
+sshpass -p$OUTPASSWORD ssh -o StrictHostKeyChecking=no $OUTUSERNAME@$OUTADDRESS 'exit'
+if [ $? > 0 ]; then
         echo "There were problems connecting to $OUTADDRESS"
         exit 1
 fi
 
 #copy package.sh to -i and wait for it to signal that its complete
-sshpass -p "$INPASSWORD" scp -o StrictHostKeyChecking=no ./package.sh $INUSERNAME@$INADDRESS:~/package.sh
-sshpass -p "$INPASSWORD" ssh -o StrictHostKeyChecking=no $INUSERNAME@$INADDRESS 'bash ./package.sh'
+sshpass -p$INPASSWORD scp -o StrictHostKeyChecking=no ./package.sh $INUSERNAME@$INADDRESS:~/package.sh
+sshpass -p$INPASSWORD ssh -o StrictHostKeyChecking=no $INUSERNAME@$INADDRESS 'bash ./package.sh'
 #check "complete" file for any errors, if there are errors die Print the errors. 
-sshpass -p "$INPASSWORD" scp -o StrictHostKeyChecking=no $INUSERNAME@$INADDRESS:~/complete.txt ./$INADDRESS-complete.txt
-#Add error checking
-
+sshpass -p$INPASSWORD scp -o StrictHostKeyChecking=no $INUSERNAME@$INADDRESS:~/complete.txt ./$INADDRESS-complete.txt
+#TODO#Add error checking
 #make custom changes to movein.sh
 #copy movein.sh to -o and execute it.
-sshpass -p "$OUTPASSWORD" scp -o StrictHostKeyChecking=no ./movein.sh $OUTUSERNAME@$OUTADDRESS:~/movein.sh
-sshpass -p "$OUTPASSWORD" ssh -o StrictHostKeyChecking=no $OUTUSERNAME@$OUTADDRESS 'bash ./movein.sh'
+sshpass -p$OUTPASSWORD scp -o StrictHostKeyChecking=no ./movein.sh $OUTUSERNAME@$OUTADDRESS:~/movein.sh
+sshpass -p$OUTPASSWORD ssh -o StrictHostKeyChecking=no $OUTUSERNAME@$OUTADDRESS 'bash ./movein.sh'
 #Wait for movein.sh to signal it is complete. 
 #Migration Complete, thank you for using Migrator
 echo "Migration Complete, thank you for using Migrator!".
