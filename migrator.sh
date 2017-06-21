@@ -23,7 +23,8 @@ while getopts ":i:o:" opt; do
         esac
 done
 
-ERRORMESS="You have not provided all the options needed to run, please provide both -i and -o\n"
+ERRORMESS="You have not provided all the options needed to run, please provide both -i and -o
+"
 
 #Check for all the options
 if [[ ! "$INGRESS" ]]; then
@@ -45,7 +46,11 @@ OUTADDRESS=${OUTFO[0]}
 OUTUSERNAME=${OUTFO[1]}
 OUTPASSWORD=${OUTFO[2]}
 
-ERRORMESS="Information entered did not validate make sure to have:\nA username with only letters and numbers.\nA password between 1 - 255 characters.\nA valid IPv4 address.\n"
+ERRORMESS="Information entered did not validate make sure to have:
+A username with only letters and numbers.
+A password between 1 - 255 characters.
+A valid IPv4 address.
+"
 #validate userinput
 #Usernames should be letters and numbers
 if [[ $INUSERNAME =~ ^([a-z][A-Z][0-9]-_)*$ ]]; then
