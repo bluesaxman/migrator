@@ -49,34 +49,39 @@ OUTPASSWORD=${OUTFO[2]}
 ERRORMESS="Information entered did not validate make sure to have:
 A username with only letters and numbers.
 A password between 1 - 255 characters.
-A valid IPv4 address.
-"
+A valid IPv4 address."
 #validate userinput
 #Usernames should be letters and numbers
 if [[ $INUSERNAME =~ ^([a-z][A-Z][0-9]-_)*$ ]]; then
         echo $ERRORMESS
+        echo $INUSERNAME
         exit 1
 fi
 if [[ $OUTUSERNAME =~ ^([a-z][A-Z][0-9]-_)*$ ]]; then
         echo $ERRORMESS
+        echo $OUTUSERNAME
         exit 1
 fi
 #Password must be between 1 - 255 characters
 if [[ $INPASSWORD =~ ^.{1-255}$ ]]; then
         echo $ERRORMESS
+        echo $INPASSWORD
         exit 1
 fi
 if [[ $OUTPASSWORD =~ ^.{1-255}$ ]]; then
         echo $ERRORMESS
+        echo $OUTPASSWORD
         exit 1
 fi
 #IP Address must be a valid IP address
-if [[ $INADDRESS =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+if [[ $INADDRESS =~ ^[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}$ ]]; then
         echo $ERRORMESS
+        echo $INADDRESS
         exit 1
 fi
-if [[ $OUTADDRESS =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+if [[ $OUTADDRESS =~ ^[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}\.[0-9]{1-3}$ ]]; then
         echo $ERRORMESS
+        echo $OUTADDRESS
         exit 1
 fi
 
